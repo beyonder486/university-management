@@ -8,6 +8,6 @@ class IntentionalFailureTest {
 
     @Test
     void intentionallyFailsToDemonstrateGitHubActionsFailure() {
-        assertEquals("expected value", "intentional failure demo");
+        assertEquals("intentional failure demo", "intentional failure demo");
     }
 }

@@ -4,9 +4,19 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Choose normal tests or demonstrate an intentional test failure"
+        required: true
+        type: choice
+        options:
+          - normal
+          - intentional-failure-demo
+        default: normal
 
 jobs:
   test:
+    if: github.event_name != 'workflow_dispatch' || inputs.mode == 'normal'
     name: Java 21 tests
     runs-on: ubuntu-latest
     defaults:
@@ -25,3 +35,24 @@ jobs:
 
       - name: Run unit and integration tests
         run: mvn --batch-mode --no-transfer-progress clean verify
+
+  intentional-failure-demo:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'intentional-failure-demo'
+    name: Intentional failure demonstration
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Run the intentionally failing test
+        run: mvn --batch-mode --no-transfer-progress -Dtest=IntentionalFailureDemo test

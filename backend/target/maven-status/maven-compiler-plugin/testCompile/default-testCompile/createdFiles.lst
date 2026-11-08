@@ -1,4 +1,3 @@
 com\university\management\service\StudentServiceTest.class
 com\university\management\StudentApiIntegrationTest.class
 com\university\management\service\AuthServiceTest.class
-com\university\management\IntentionalFailureDemo.class

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.university.management.IntentionalFailureDemo
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.057 s <<< FAILURE! -- in com.university.management.IntentionalFailureDemo
-com.university.management.IntentionalFailureDemo.intentionallyFailsToDemonstrateGitHubActionsFailure -- Time elapsed: 0.031 s <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.126 s <<< FAILURE! -- in com.university.management.IntentionalFailureDemo
+com.university.management.IntentionalFailureDemo.intentionallyFailsToDemonstrateGitHubActionsFailure -- Time elapsed: 0.063 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <expected value> but was: <intentional failure demo>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)

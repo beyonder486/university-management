@@ -1,6 +1,8 @@
 name: Intentional Failure Demo
 
 on:
+  push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -22,4 +24,4 @@ jobs:
           cache: maven
 
       - name: Run the intentionally failing test
-        run: mvn --batch-mode --no-transfer-progress -Dtest=IntentionalFailureDemo test
+        run: mvn --batch-mode --no-transfer-progress -Dtest=IntentionalFailureTest test

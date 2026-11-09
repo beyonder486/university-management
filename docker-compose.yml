@@ -16,6 +16,7 @@ services:
       retries: 10
 
   backend:
+    image: ${DOCKER_IMAGE_BACKEND:-beyonder486/university-backend:latest}
     build:
       context: ./backend
     environment:
@@ -30,12 +31,20 @@ services:
       - "8080:8080"
 
   frontend:
+    image: ${DOCKER_IMAGE_FRONTEND:-beyonder486/university-frontend:latest}
     build:
       context: ./frontend
     depends_on:
       - backend
     ports:
       - "80:80"
+
+  watchtower:
+    image: containrrr/watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 60 --cleanup
 
 volumes:
   pgdata:
